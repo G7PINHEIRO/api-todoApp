@@ -18,10 +18,13 @@ app.listen(PORT, () => {
 })
 // Obtendo os parametros passados pela linha de comando
 var userArgs = process.argv.slice(2);
-var mongoURL = userArgs[0];
+var mongoURL = "mongodb+srv://mateus222923:220103@cluster0.5hhas2z.mongodb.net/tarefasDB?retryWrites=true&w=majority&appName=Cluster0";
 //Configurando a conexao com o Banco de Dados
 var mongoose = require('mongoose');
-mongoose.connect(mongoURL);
+mongoose.connect(mongoURL, {
+ useNewUrlParser: true, useUnifiedTopology:
+ true
+});
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 db.on('error', (error) => {
